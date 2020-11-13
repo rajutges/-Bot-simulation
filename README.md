@@ -1,5 +1,6 @@
 # -Bot-simulation
 **(participated in E-ROBO held by IEEE NIT Patna)**
+<br/>
 construct a line following and obstacle avoiding bot 
 <div align="center">
   
@@ -7,7 +8,7 @@ construct a line following and obstacle avoiding bot
  
  
 </div>
-# you can find a tutorial video may by me ny this link:
+# you can find a tutorial video may by me by this link:
 
 <br/>
 
@@ -31,20 +32,20 @@ construct a line following and obstacle avoiding bot
 #### What to do?
 
 these thing to be done in the solution folder:
-
+<br/>
  - design arena as per given in the file named "arena"
  - choose any number of sensors, actuators or motors to construct you bot. 
  - easier testing and debugging
  - compact and clean code of controller can be done using c/c++/python  with respect to the arena that has to be built by you.
  - start position of the bot be :
-                            **x** = 0.355417
-                            **y** = 0.427712
-                            **z** = 1.38351
+                            **x** = 0.355417<br/>
+                            **y** = 0.427712<br/>
+                            **z** = 1.38351<br/>
                            <br/>
                            
-  - end point be:            **x** = in the range of -2.1 to -2.2
-                              **y** = 0.0430075
-                              **z** = in the range of -1.48 to -1.51
+  - end point be:            **x** = in the range of -2.1 to -2.2<br/>
+                              **y** = 0.0430075<br/>
+                              **z** = in the range of -1.48 to -1.51<br/>
  
 <br/>
 
