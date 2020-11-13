@@ -37,13 +37,13 @@ these thing to be done in the solution folder:
  - choose any number of sensors, actuators or motors to construct you bot. 
  - easier testing and debugging
  - compact and clean code of controller can be done using c/c++/python  with respect to the arena that has to be built by you.
- - start position of the bot be :
+ - start position of the bot be :<br/>
                             **x** = 0.355417<br/>
                             **y** = 0.427712<br/>
                             **z** = 1.38351<br/>
                            <br/>
                            
-  - end point be:            **x** = in the range of -2.1 to -2.2<br/>
+  - end point be:     <br/>       **x** = in the range of -2.1 to -2.2<br/>
                               **y** = 0.0430075<br/>
                               **z** = in the range of -1.48 to -1.51<br/>
  
