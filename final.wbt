@@ -1,0 +1,756 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.0023754788984707786 0.6849729371923059 0.7285646384598613 3.1287683648307714
+  position -1.0952791592451407 10.393451967990833 0.4731380799842644
+  follow "robot"
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation -0.743115 1.55431e-15 -0.319627
+  rotation 0 1 0 -3.1415853071795863
+  floorSize 6 6
+  floorTileSize 0 0
+  floorAppearance Parquetry {
+    type "light strip"
+    IBLStrength 100
+  }
+  wallThickness 0
+}
+DEF obs7(a) WoodenBox {
+  translation -1.95021 0.049607660362163096 0.760144
+  rotation 3.3016568978438513e-17 1 6.911216282203116e-17 -1.5700000000000003
+  name "wooden box(10)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+Robot {
+  translation 0.438799 0.0509369 1.42961
+  rotation -0.009259580990160771 0.00021086002254803134 -0.9999571069290609 3.14064
+  scale 1.3 1.3 1.3
+  children [
+    DEF body Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.2 0.04 0.12
+      }
+    }
+    GPS {
+      children [
+        Solid {
+          translation 0 -0.02 0
+          rotation 0 1 0 -1.3089953071795861
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Cylinder {
+                height 0.02
+                radius 0.01
+              }
+            }
+          ]
+          recognitionColors [
+            0 0 0
+          ]
+        }
+      ]
+      name "global"
+    }
+    Solid {
+      translation 0.11 0.018 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.025 0.007 0.01
+          }
+        }
+      ]
+      name "solid(3)"
+      boundingObject Box {
+        size 0.02 0.01 0.01
+      }
+      physics Physics {
+      }
+      locked TRUE
+    }
+    DistanceSensor {
+      translation 0.126 0.0202 3.21795e-08
+      rotation -6.48325e-07 5.33931e-07 1 1.56999
+      children [
+        DEF ir Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "GS_CENTER"
+      boundingObject USE ir
+      physics Physics {
+      }
+      locked TRUE
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.1 0.0200003 0.043
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "GS_LEFT"
+      boundingObject USE ir
+      physics Physics {
+      }
+      locked TRUE
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.1 0.0200001 0.064
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir_left"
+      boundingObject USE ir
+      physics Physics {
+      }
+      locked TRUE
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.1 0.0200005 -0.043
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "GS_RIGHT"
+      boundingObject USE ir
+      physics Physics {
+      }
+      locked TRUE
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.1 0.0200002 -0.063
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir_right"
+      boundingObject USE ir
+      physics Physics {
+      }
+      locked TRUE
+      type "infra-red"
+    }
+    DEF right DistanceSensor {
+      translation 0.1 0 -0.06
+      rotation 0 1 0 1.5708
+      children [
+        DEF sensor Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      locked TRUE
+      lookupTable [
+        0 0 0
+        0.3 100 0
+      ]
+      aperture 1.57
+      resolution 1
+    }
+    DEF sensor_f DistanceSensor {
+      translation 0.1 0 0
+      children [
+        DEF sensor Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_front"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      locked TRUE
+      lookupTable [
+        0 0 0
+        0.3 100 0
+      ]
+    }
+    DEF left DistanceSensor {
+      translation 0.1 -3.8359e-10 0.06
+      rotation -9.58979e-09 1 9.58976e-09 -1.5707953071795862
+      children [
+        DEF sensor Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      locked TRUE
+      lookupTable [
+        0 0 0
+        0.3 100 0
+      ]
+      aperture 1
+    }
+    DEF fr HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3571.8301246099686
+        axis 0 0 1
+        anchor 0.05 0 0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05014110176732054 0.00023642008353807602 0.07040640513989851
+        rotation -0.08515338583404936 -0.7048720422380185 -0.7042047322705255 3.3081423230138958
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        locked TRUE
+      }
+    }
+    DEF fl HingeJoint {
+      jointParameters HingeJointParameters {
+        position 32611.012344284925
+        axis 0 0 1
+        anchor 0.05 0 -0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.04996544822030211 -3.7236512387629895e-06 -0.0700967423528441
+        rotation 0.9480491029179064 0.22371978689713384 0.22616886480515785 1.6170854779490358
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics Physics {
+        }
+        locked TRUE
+      }
+    }
+    DEF bl HingeJoint {
+      jointParameters HingeJointParameters {
+        position 32611.955711412356
+        axis 0 0 1
+        anchor -0.08 0 -0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.07993203350870037 1.1502717827133779e-05 -0.07008287046951728
+        rotation 0.3609497761751938 0.6606358773263105 0.6582366570378569 2.4416474732971003
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        locked TRUE
+      }
+    }
+    DEF br HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3573.5565955288284
+        axis 0 0 1
+        anchor -0.08 0 0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.07992167047516176 -2.802441634149884e-06 0.07008921669691832
+        rotation 0.5451931554549642 -0.5923654507480879 -0.593184285028754 2.1396317289040727
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE wheel
+        physics Physics {
+        }
+        locked TRUE
+      }
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  recognitionColors [
+    0 0 0
+  ]
+  controller "my_controller157"
+  battery [
+    0
+  ]
+}
+DEF obs9 WoodenBox {
+  translation 0.656077 0.04960766036216309 -0.0870416
+  rotation -2.8295793291377796e-15 0.9999999999999999 2.0308982051056222e-17 0.025933834669015252
+  name "wooden box(50)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF obs7(b) WoodenBox {
+  translation 0.30894954753303255 0.04960787080464724 0.6995535532126409
+  rotation 0.0011226702978276582 0.9999986688641196 0.0011840107226802322 -1.6225419389426399
+  name "wooden box(48)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF obs7(b) WoodenBox {
+  translation -0.1977617134856911 0.04960766036216306 1.3994512609410308
+  rotation 0.5901952023897842 0.5708194211289945 0.5708194211289952 -2.075234861669608
+  name "wooden box(3)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs7(a) WoodenBox {
+  translation 0.06683632186183168 0.04960730903607921 0.5027414636650217
+  rotation -0.4006224557623639 0.782141517120172 0.4772381953866315 0.00030260847441451364
+  name "wooden box(47)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs7(a) WoodenBox {
+  translation -0.5599999798257408 0.049607662557261116 1.020011170463688
+  rotation 0.11013009673703682 0.9939171708932891 -0.00013855024781933215 8.189479438947683e-05
+  name "wooden box(2)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs7(a) WoodenBox {
+  translation -1.7400000008625522 0.049607660362163096 1.0200993347036953
+  rotation 1.1945407501977013e-12 1 -1.2685886190802802e-13 8.003558315180137e-05
+  name "wooden box(9)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF obs6(b) WoodenBox {
+  translation -0.8040000215407254 0.04960765816502405 0.769989193220856
+  rotation -2.5709036827592e-07 0.9999999999999252 -2.888709726236406e-07 1.5700121089716534
+  name "wooden box(46)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs5(b) WoodenBox {
+  translation -0.29 0.04960766036216309 -0.38
+  rotation 3.214866568241694e-17 1 3.4481312553525685e-17 1.5700922838871032
+  name "wooden box(44)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs4(a) WoodenBox {
+  translation -1.1399927227396363 0.0496075978337155 -0.13977548199119122
+  rotation -0.10537113416643293 -0.9944329609904139 -0.00010089755823950702 -0.0009109841469169186
+  name "wooden box(41)"
+  size 0.45 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs3(b) WoodenBox {
+  translation -1.5502394624781848 0.04011301912071148 -0.38923499961478536
+  rotation 3.3859285885364565e-05 0.9999999987244225 -3.747937595837767e-05 -1.582675636944976
+  name "wooden box(40)"
+  size 0.4 0.1 0.1
+  mass 100
+}
+DEF obs3(b) WoodenBox {
+  translation -1.400000742050804 0.040112791576086305 -0.3901408298235782
+  rotation 2.542763069691088e-06 0.9999999999816347 -5.501382882103375e-06 -1.5825234573415006
+  name "wooden box(7)"
+  size 0.4 0.1 0.1
+  mass 100
+  locked TRUE
+}
+DEF obs3(a) WoodenBox {
+  translation -1.735850584481586 0.04960735220397432 -0.1389155988991368
+  rotation -0.9879129053989397 0.15500850091165522 0.0006752713134976888 -0.000866124080929278
+  name "wooden box(39)"
+  size 0.45 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF c13 StraightRoadSegment {
+  translation 0.7 1e-05 0.78
+  rotation 0 1 0 -1.58
+  name "road 20"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3
+}
+DEF obs7(a) WoodenBox {
+  translation -1.9001 0.04960766036216309 0.230144
+  rotation -4.511600825790459e-17 1 1.9117134106095875e-17 -1.5700000000000003
+  name "wooden box(11)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF c13 StraightRoadSegment {
+  translation 0.7 1e-05 0.22
+  rotation 0 1 0 -1.58
+  name "road 20(1)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3
+}
+DEF obs7(a) WoodenBox {
+  translation 0.0988781 0.049607660362163096 -0.640435
+  rotation -0.5290921755719498 -0.687086776760504 0.49796910642067166 3.2230727358248167e-17
+  name "wooden box(12)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF c13 StraightRoadSegment {
+  translation 0.7 1e-05 -0.353
+  rotation 0 1 0 -1.58
+  name "road 20(2)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3
+}
+DEF obs1(a) WoodenBox {
+  translation -1.780849700888891 0.04960780399253462 -1.2433523576189554
+  rotation 0.06467623176842792 0.9979056690466037 0.0011228218411396338 -0.03351730308856494
+  name "wooden box(35)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF obs1(b) WoodenBox {
+  translation -1.9988973451168268 0.049607398586052454 -0.9988896396388485
+  rotation 2.169601625886388e-05 0.9999999936213794 0.00011084459365651995 1.5799245070641312
+  name "wooden box(36)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF c11 StraightRoadSegment {
+  translation 0.7 1e-05 -0.94
+  rotation 0 1 0 -1.58
+  name "road 17"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3
+}
+DEF obs5(b) WoodenBox {
+  translation 0.200793 0.049607660362163096 -1.50965
+  rotation -1.0005233144414303e-17 1 -1.568212495552964e-17 1.5700922838871032
+  name "wooden box(8)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF r14 StraightRoadSegment {
+  translation -2.32 1e-05 -1.54
+  name "road 16(1)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.9
+}
+DEF r14 StraightRoadSegment {
+  translation -1.76 1e-05 -1.52
+  name "road 16(2)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.9
+}
+DEF r14 StraightRoadSegment {
+  translation -1.16 1e-05 -1.53
+  name "road 16(3)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.9
+}
+DEF r14 StraightRoadSegment {
+  translation -0.55 1e-05 -1.53
+  name "road 16(4)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.9
+}
+DEF r14 StraightRoadSegment {
+  translation 0.05 1e-05 -1.53
+  name "road 16(5)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.9
+}
+WoodenBox {
+  translation -41527015.149990834 57017713.6578664 -10399229.571204657
+  rotation -0.243605135865967 -0.23410769058563283 0.9411961150516854 -2.7866986606796984
+  name "wooden box(28)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation 6.219790813322244 0.049607660362163075 -9.882765513532537
+  rotation -0.998721908331324 1.2247114188027436e-10 -0.05054255453613737 3.1415926487497283
+  name "wooden box(17)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+WoodenBox {
+  translation -83241269.73333733 119514345.13694398 5401516.897289769
+  rotation 0.2742879898166802 -0.6132285732904514 0.7407542207388913 2.952034356910956
+  name "wooden box(18)"
+  size 0.5 0.1 0.1
+  mass 1
+}
+DEF r3 StraightRoadSegment {
+  translation 0.68 1e-05 -1.52
+  name "road(1)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 2.95
+  pavementAppearance Pavement {
+    type "black stone"
+  }
+}
+DEF c3 StraightRoadSegment {
+  translation 0.723 1e-05 -1.49
+  rotation 0 1 0 -1.58
+  name "road(7)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3.09
+  pavementAppearance Pavement {
+    type "black stone"
+  }
+}
+DEF c3 StraightRoadSegment {
+  translation 0.725 1e-05 1.41
+  rotation 0 1 0 -1.58
+  name "road(11)"
+  width 0.1
+  numberOfLanes 1
+  lines [
+    RoadLine {
+      color 0 0 0
+      type "none"
+      width 0.03
+    }
+  ]
+  roadBorderHeight 0.015
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3.09
+  pavementAppearance Pavement {
+    type "black stone"
+  }
+}
+DEF obs5(a) WoodenBox {
+  translation -0.540377861144686 0.04960766036216309 -0.6397124186009101
+  rotation -0.8600144556021004 0.37829047702198254 0.3424491949908824 1.2888698097635227e-16
+  name "wooden box(43)"
+  size 0.4 0.1 0.1
+  mass 1
+}
+DEF obs2(a) WoodenBox {
+  translation -1.12 0.049607660362163096 -1.2
+  rotation 1.3919092931244992e-05 0.9999999999028326 7.702820107595328e-07 -7.509754285905752e-11
+  name "wooden box(37)"
+  size 0.4 0.1 0.1
+  mass 1
+  locked TRUE
+}
+DEF obs2(b) WoodenBox {
+  translation -0.88 0.049607660362163096 -0.939032
+  rotation -6.296181796221369e-17 1 -1.010677554091965e-17 -1.5697441280330113
+  name "wooden box(38)"
+  size 0.4 0.1 0.1
+  mass 1
+}
